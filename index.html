@@ -1,3 +1,102 @@
 <html>
-Hello World!
+    <head>
+        <link rel="stylesheet" href="main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            var onae = false
+            const url = 'https://script.google.com/macros/s/AKfycbyVwl-yx66vFe6ofFUZ_OKkMOeu-juM6ZOFX_GYSXSQfqPcgIdLnTPOdRKjOF_DDjtI7A/exec'
+            var toggle = false
+            async function get(url='https://google.com',params={},type='GET') {
+                try {
+                    var str = '?'
+                    var i = 0 
+                    for (var k in params){
+                        if (i!=0){
+                            str = str + '&'
+                        }
+                        i++
+                        str = str + k.toString() + '=' + params[k].toString()
+                    }
+                    console.log(url+str)
+                    const response = await fetch(url+str,{
+                        redirect: "follow",
+                        method: "GET"
+                    })
+                    alert(response)
+                    console.log('eeeeeeeeeeeeeee')
+                    console.log(response,response.status)
+                    return response.json()
+                }
+                catch{
+    
+                }
+            }
+            $(document).ready(function(){
+                $('#togglea').on('click',function(){
+                    onae = !onae
+                    document.getElementById('password').type = onae? 'text' : 'password'
+                })
+                $('#toggle').on('click',function(){
+                    /*if (toggle == false){
+                        $('.main').css('visibility','hidden')
+                        
+                    }else{
+                        $('.main').css('visibility','visible')
+                    }
+                    toggle = !toggle*/
+                    get(
+                        url,
+                        {
+                            'username': document.getElementById('username').value,
+                            'pasword': document.getElementById('password').value,
+                            'email': document.getElementById('mail').value
+                        }
+                    )
+                    .then(res => {
+                        console.log(res)
+                    })
+                })
+            })
+        </script>
+        <meta charset="UTF-8">
+        <title>Welcome!</title>
+    </head>
+    <body>
+        <h1 style="padding: 50px; ">
+            e
+        </h1>
+        <div class='main'>
+            Hello!
+        </div>
+        <div class="a">
+            <button id='toggle' class="a">
+                Click Me!
+            </button>
+            <br>
+            <p class="a">
+                Username
+            </p>
+            <input type="text" name class="a" id = 'username'>
+            <br>
+            <p class="a">
+                Password
+            </p>
+            <input type="password" name id='password' class="a"> 
+            <br>
+                <p class="a" >   
+                    Show Password
+                </p>
+                <button id='togglea'>
+                    Toggle
+                </button>
+            
+            <br>
+            <br>    
+            <p class="a">
+                Email
+            </p>
+            <input type="email" name class="a" id = 'mail'>
+        </div>
+
+    </body>
 </html>
