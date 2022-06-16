@@ -12,25 +12,28 @@
     .ticketMain {
       background-color: grey;
     }
+    .offer {
+      border-bottom-style: solid;
+    }
     
   </style>
 </head>
-<body>
-  <div>
+<body> 
+  <div class="ticketMain">
     Tickets:
   </div>
-  
-  Special Offers:
-  <div>
-    <input type="radio" id="2A3C" name="Offers"> <label for="2A3C"> 2 Adults, 3 Children $41</label>
+  <div class="offers">
+    <h2 class="offer">Family Offers: </h2>
+    <div>
+      <input type="radio" id="2A3C" name="Offers"> <label for="2A3C"> 2 Adults, 3 Children $45</label>
+    </div>
+    <div>
+      <input type="radio" id="2A2C" name="Offers"> <label for="2A2C"> 2 Adults, 2 Children $38</label>
+    </div>
+    <div>
+      <input type="radio" id="2A1C" name="Offers"> <label for="2A1C"> 2 Adults, 1 Child $30 </label>
+    </div>
   </div>
-  <div>
-    <input type="radio" id="2A2C" name="Offers"> <label for="2A2C"> 2 Adults, 2 Children $38</label>
-  </div>
-  <div>
-    <input type="radio" id="2A1C" name="Offers"> <label for="2A1C"> 2 Adults, 1 Child $30 </label>
-  </div>
-  
   Custom Selection
   
   <input type="number" id="adult" > <label for="adult"> Adults</label>
