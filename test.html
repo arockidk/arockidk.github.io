@@ -61,9 +61,9 @@
           child = val["params"][1]
           $('.priceChild').text('$' + child + ' each')
           console.log(val["params"])
-          $('.2A1C').text('2 Adults, 1 Child, $' + val["params"][2])
-          $('.2A2C').text('2 Adults, 2 Children, $' + val["params"][3])
-          $('.2A3C').text('2 Adults, 3 Children, $'+val["params"][4])
+          $('.2a1c').text('2 Adults, 1 Child, $' + val["params"][2])
+          $('.2a2c').text('2 Adults, 2 Children, $' + val["params"][3])
+          $('.2a3c').text('2 Adults, 3 Children, $'+val["params"][4])
 
           $('.2A1C').on('click',function(){
             special = val["params"][2]
@@ -173,13 +173,13 @@
   <div class=offer>
     <h2 class=sep>Family Offers: </h2>
     <div>
-      <input type="radio" id="2A3C" class="2A3C"  name="Offers"> <label class="2A3C" for="2A3C"> Loading... </label>
+      <input type="radio" id="2A3C" class="2A3C"  name="Offers"> <label class="2A3C 2a3c" for="2A3C"> Loading... </label>
     </div>
     <div>
-      <input type="radio" id="2A2C" class="2A2C" name="Offers"> <label class="2A2C" for="2A2C"> Loading... </label>
+      <input type="radio" id="2A2C" class="2A2C" name="Offers"> <label class="2A2C 2a2c" for="2A2C"> Loading... </label>
     </div>
     <div>
-      <input type="radio" id="2A1C" class="2A1C" name="Offers"> <label class="2A1C" for="2A1C"> Loading... </label>
+      <input type="radio" id="2A1C" class="2A1C" name="Offers"> <label class="2A1C 2a1c" for="2A1C"> Loading... </label>
     </div>
   </div>
   <h2 class=sep>
