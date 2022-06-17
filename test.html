@@ -3,10 +3,12 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
-    $(.aPlus).on(click, function(event) {
+    function a(event) {
       $(#acwv).html("1")
       alert($(#acwv).html())
     }
+    
+    $(.aPlus).on(click,a) 
   </script>
   <style>
     label,body {
@@ -67,7 +69,7 @@
   
     <div class="adult"> 
       Adults: <label id=“avcw> 0 </label>
-      <div class=“buttons”> <button class="aPlus">+ </button> <button id="aMinus">- </button> </div>
+      <div class=“buttons”> <button class="aPlus" >+ </button> <button id="aMinus" onclick="a()">- </button> </div>
     </div> 
    
   
