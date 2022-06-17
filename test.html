@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(button#aPlus).on(click, function(event) {
+      $(#acwv).html("1")
+    }
+  </script>
   <style>
     label,body {
       font-family: sans-serif;
       color: white;
     }
-    
+
     body {
       background-color: mediumseagreen;
     }
@@ -57,12 +63,10 @@
   <h2 class=“sep”>
     Custom Selection
   </h2>
-  <script>
-    function a() { document.getElementById(“avcw”).innerHTML =“2” }
-  </script>
+  
     <div class="adult"> 
       Adults: <label id=“avcw> 0 </label>
-      <div class=“buttons”> <button onclick=“a()”>+ </button> <button>- </button> </div>
+      <div class=“buttons”> <button id="aPlus">+ </button> <button id="aMinus">- </button> </div>
     </div> 
    
   
