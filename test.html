@@ -3,14 +3,19 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
-    function a(event) {
-      $(".aDult").text("1")
-      alert($(".aDult").text())
+    let total = 0
+    function updateTotal(val){
+      total += val
     }
-    
-    $(".aPlus").on("click", function (event) {
-      $(".aDult").text("1")
+    function changeValue(output,val){
+     let a = Number(output.text())
+      a += val
+      output.text(a.toString())
+    }
+    $(".aPlus").on("click", function () {
+      changeValue($(".aDult"),1)
     }) 
+    
   </script>
   <style>
     label,body {
