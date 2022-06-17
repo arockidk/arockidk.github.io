@@ -3,20 +3,94 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
+    let adult = 0
+    
+    let child = 0
+    let total = 0
+    let special = 0
+    function reverseString(str) {
+        return str.split("").reverse().join("");
+    }
+
     $(window).on("load", function() {
-      let total = 0
-      function updateTotal(val){
-        total += val
+      function updateTotal(){
+        total = $('.aDult').text() * adult
+        total += $('.aChild').text() * child
+        total += special
+        total = total.toFixed(2)
+        $(".total").text("Total: $" + total)
+        
       }
       function changeValue(output,val){
-       let a = Number(output.text())
+        let a = Number(output.text())
         a += val
+        if (a < 0){
+          a -= val
+        }
         output.text(a.toString())
+        updateTotal()
       }
-      $(".aPlus").on("click", function () {
-        changeValue($(".aDult"),1)
-      }) 
-    
+      async function get(url='https://google.com',params={},type='GET') {
+        try {
+          var str = '?'
+          var i = 0 
+          for (var k in params){
+            if (i!=0){
+              str = str + '&'
+            }
+            i++
+            str = str + k.toString() + '=' + params[k].toString()
+          }
+          console.log(url+str)
+          const response = await fetch(url+str,{
+            redirect: "follow",
+            method: "GET"
+          })
+          console.log('eeeeeeeeeeeeeee')
+          console.log(response,response.status)
+          return response.json()
+        }
+        catch{
+          $('.price').text('Prices failed to load. Please refresh the page later.')
+        }
+      }
+      get("https://script.google.com/macros/s/AKfycbxAXjGY8pdEZHuUSPsZmycP3BVgDrpPATrfCGzgCTtW7UXWVsXBYGdjOCwYSSTUvz5V8g/exec")
+        .then((val) => {
+          adult = val["params"][0]
+          $('.priceAdult').text('$' + adult + ' each')
+          child = val["params"][1]
+          $('.priceChild').text('$' + child + ' each')
+          console.log(val["params"])
+          $('.2A1C').text('2 Adults, 1 Child, $' + val["params"][2])
+          $('.2A2C').text('2 Adults, 2 Children, $' + val["params"][3])
+          $('.2A3C').text('2 Adults, 3 Children, $'+val["params"][4])
+
+          $('.2A1C').on('click',function(){
+            special = val["params"][2]
+            updateTotal()
+          })
+          $('.2A2C').on('click',function(){
+            special = val["params"][3]
+            updateTotal()
+          })
+          $('.2A3C').on('click',function(){
+            special = val["params"][4]
+            updateTotal()
+          })
+          $(".aPlus").on("click", function () {
+            changeValue($(".aDult"),1)  
+          }) 
+          $(".aMinus").on("click", function () {
+            changeValue($(".aDult"),-1)
+          }) 
+          $(".cPlus").on("click", function () {
+            changeValue($(".aChild"),1)
+          }) 
+          $(".cMinus").on("click", function () {
+            changeValue($(".aChild"),-1)
+          }) 
+        })
+
     });
 
   </script>
@@ -28,6 +102,7 @@
 
     body {
       background-color: mediumseagreen;
+      width: 400px;
     }
     .ticketMain {
       background-color: grey;
@@ -43,15 +118,51 @@
       border: 6px solid rgb(0,120,50);
       background-color: seagreen;
       height: 70px;
-      width: 170px;
-      padding: 10px;
+      width: 240px;
       text-align: left;
+      border-radius: 15px;
     }
     .number {
       border: 2px solid #2E8BB5;
     }
     .buttons {
       text-align: right;
+    }
+    .aDult,.aChild {
+      height: 82px;
+      width: 33px;
+      background-color: darkolivegreen;
+      display: inline-block;
+      position: relative;
+      bottom: 6px;
+      right: 6px;
+      text-align: center;
+      line-height: 82px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+    .cPlus,.cMinus,.aPlus,.aMinus {
+      display: inline-block;
+      position: relative;
+      bottom: 50px;
+      border-radius: 15px;
+      border-style: solid;
+      border-width: 1px;
+    }
+    .title {
+      position: relative;
+      bottom: 6px;
+      right: 4px;
+    }
+    .priceAdult, .priceChild {
+      position: relative;
+      bottom: 40px;
+      left: 36px;
+      font-size: 11px;
+    }
+    #finalise {
+      width: 120px;
+      height: 40px;
     }
   </style>
 </head>
@@ -62,13 +173,13 @@
   <div class=offer>
     <h2 class=sep>Family Offers: </h2>
     <div>
-      <input type="radio" id="2A3C" name="Offers"> <label for="2A3C"> 2 Adults, 3 Children $45</label>
+      <input type="radio" id="2A3C" class="2A3C"  name="Offers"> <label class="2A3C" for="2A3C"> Loading... </label>
     </div>
     <div>
-      <input type="radio" id="2A2C" name="Offers"> <label for="2A2C"> 2 Adults, 2 Children $38</label>
+      <input type="radio" id="2A2C" class="2A2C" name="Offers"> <label class="2A2C" for="2A2C"> Loading... </label>
     </div>
     <div>
-      <input type="radio" id="2A1C" name="Offers"> <label for="2A1C"> 2 Adults, 1 Child $30 </label>
+      <input type="radio" id="2A1C" class="2A1C" name="Offers"> <label class="2A1C" for="2A1C"> Loading... </label>
     </div>
   </div>
   <h2 class=sep>
@@ -76,10 +187,27 @@
   </h2>
   
     <div class="adult"> 
-      Adults: <span class=aDult> 0 </span>
-      <div class=buttons> <button class=aPlus >+ </button> <button id=aMinus onclick="a()">- </button> </div>
+      <div class=aDult> 0 </div> <span class="title">Adults (Age 18+)</span> <br>
+      <span class="priceAdult">Loading...</span>
+      <div class=buttons> <button class=aPlus >+ </button> <button class=aMinus >- </button> </div>
     </div> 
-   
+    <div class="adult"> 
+      <div class=aChild> 0 </div> <span class="title">Children (17 and below)</span> <br>
+      <span class="priceChild">Loading...</span>
+      <div class=buttons> <button class=cPlus >+ </button> <button class=cMinus >- </button> </div>
+    </div> 
   
+
+  
+  <br>
+  <br>
+  <br><br><br><br><br><br><br>
+  <br><br>
+  <p class="total">Total: $0.00</p>    
+
+    <br>
+
+  <br>
+  <button id="finalise">Buy</button>
 </body>
 </html>
