@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <style>
@@ -12,7 +13,7 @@
     .ticketMain {
       background-color: grey;
       height: 80px;
-      width: 150px;
+      width: 120px;
       margin-bottom: 70px;
       text-align: center;
     }
@@ -20,7 +21,20 @@
       border-bottom-style: solid;
     }
     .adult {
+      border: 6px solid rgb(0,120,50);
       background-color: seagreen;
+      height: 70px;
+      width: 170px;
+      padding: 10px;
+      text-align: left;
+    }
+    .number {
+      border: 2px solid #2E8BB5
+    }
+    .buttons {
+      padding: 0px 0px 60px 0px
+      text-align: right;
+      background-color: green;
     }
   </style>
 </head>
@@ -44,11 +58,13 @@
     Custom Selection
   </h2>
   <script>
+    function a() { document.getElementById(“avcw”).innerHTML =“2” }
   </script>
-  <div class=“adult”>
-    <label> 
-      Adults <p>0 </p> <div>+ </div> <div>-</div>
-    </label>
-  </div>
+    <div class="adult"> 
+      Adults: <label id=“avcw> 0 </label>
+      <div class=“buttons”> <button onclick=“a()”>+ </button> <button>- </button> </div>
+    </div> 
+   
+  
 </body>
 </html>
