@@ -64,11 +64,11 @@
           $('.2a1c').text('2 Adults, 1 Child, $' + val["params"][2])
           $('.2a2c').text('2 Adults, 2 Children, $' + val["params"][3])
           $('.2a3c').text('2 Adults, 3 Children, $'+val["params"][4])
-          $('.finalise').on('click', function() {
+         /* $('.finalise').on('click', function() {
             get('https://script.google.com/macros/s/AKfycby7t4UAEv77_8xz1mE-VLBPebJym-b4X-25JrmYZwL2MhPcc3vIrbuMEXu7YkgJDFh4xQ/exec').then((val) => {
               alert(val)
             });
-          }
+          }*/
           $('.2A1C').on('click',function(){
             special = val["params"][2]
             updateTotal()
