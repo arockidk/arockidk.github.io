@@ -288,9 +288,9 @@
                             let button = document.createElement('button')
                             button.setAttribute('id',v['uuid'])
                             button.classList.add('copy')
-                            button.innerText = 'Copy'
+                            button.innerText = 'Copy to Clipboard'
                             $(button).on('click',function(){
-                                navigator.clipboard.writeText('aefaf')
+                                navigator.clipboard.writeText('/viewauction ' + button.getAttribute('id'))
                                 alert('Copied auction command to your clipboard.')
                             })
                             
