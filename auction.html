@@ -245,8 +245,12 @@
                     parent.removeChild(parent.firstChild);
                 }
             }
+            let debounce = false
             function dio(query,page,stop) {
-                
+                if (debounce == true) {
+                    return
+                }
+                debounce = true
                 fetch(url).then((v) => {
                     v.json().then( (data) => {
                         var pages = data.totalPages
@@ -265,7 +269,7 @@
                             if ($(".bin")[0].checked != v.bin ) {
                                 return
                             }
-                            h++
+                           
                             let thing = document.createElement('li')
                                 
                             console.log(i,v)
@@ -322,15 +326,18 @@
                                 $(thing).css('color','#FF5555')
                             }
                             
-                            
+                            h++
                             $('.list')[(h + 1) % 4].appendChild(thing)
                             $('.list')[(h + 1) % 4].appendChild(document.createElement('br'))
                         })
                        // if (page + 1 < total && page + 1 < stop) {
                             
                         //    dio(query,page + 1,stop)
+                        
                         //}
+                        
                     })
+                debounce = false    
                 })
             }
         
