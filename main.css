@@ -1,24 +1,80 @@
-.a{
-    display: inline-block;
-}
-.main{
-    margin: 0%;
-    position: relative;
-    text-align: center;
-    left: 50%;
-    width: auto;
-}
-body{
-    background-color: seagreen;
-    width: 720px;
-}
-p,h1,div,button{
-    font-family: sans-serif;
-    color: mediumaquamarine;
-}
-#toggle{
-    width: 100px;
-    height: 30px;
-    position: relative;
-    
-}
+
+    label,body {
+      font-family: sans-serif;
+      color: white;
+    }
+
+    body {
+      background-color: seagreen;
+      width: 400px;
+    }
+    .ticketMain {
+      background-color: darkolivegreen;
+      height: 80px;
+      width: 120px;
+      margin-bottom: 70px;
+      text-align: center;
+      border: 4px solid seagreen;
+      border-radius: 10px;
+    }
+    .sep {
+      border-bottom-style: solid;
+    }
+    button {
+      background-color: white;
+    }
+    .adult {
+      border: 6px solid rgb(0,120,50);
+      background-color: seagreen;
+      height: 70px;
+      width: 240px;
+      text-align: left;
+      border-radius: 15px;
+    }
+    .number {
+      border: 2px solid #2E8BB5;
+    }
+    .buttons {
+      text-align: right;
+    }
+    .aDult,.aChild {
+      height: 82px;
+      width: 33px;
+      background-color: darkolivegreen;
+      display: inline-block;
+      position: relative;
+      bottom: 6px;
+      right: 6px;
+      text-align: center;
+      line-height: 82px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+    .cPlus,.cMinus,.aPlus,.aMinus {
+      display: inline-block;
+      position: relative;
+      bottom: 50px;
+      border-radius: 15px;
+      border-style: solid;
+      border-width: 1px;
+    }
+    .title {
+      position: relative;
+      bottom: 6px;
+      right: 4px;
+    }
+    .priceAdult, .priceChild {
+      position: relative;
+      bottom: 40px;
+      left: 36px;
+      font-size: 11px;
+    }
+    #finalise {
+      width: 120px;
+      height: 40px;
+    }
+    .credits {
+      font-size: 6px;
+      color: white;
+    }
+  
