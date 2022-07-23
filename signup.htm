@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Auctions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+        <script>
+            
+            
+            let c = {
+                'log': console.log
+            }
+            async function get(url="google.com",params={},method="GET"){
+                let send = url
+                params != {} ? send = send + '?' : send = send
+                
+                let i = 0
+                for (k in params){
+                    send = send + k+"="+params[k]
+                    if (Object.keys(params).length - 1 > i) {
+                        send = send + '&'
+                    }
+                    i +=1
+                }
+                
+                let result =  await fetch(send,{method: method})
+                
+                return result.json()
+            }
+            window.onload = function(){
+                $('#main').on('click',function(){
+                    console.log('Clicked')
+                    get(
+                        'https://db.arockidk.repl.co',
+                        {
+                            "username": $('#username').val(),
+
+                            "password": $('#password').val()
+                        }
+                    ).then(function(v){
+                        if (v.response == false) {
+                            $('#error').text('Username already exists.')
+                        } else {
+                            Cookies.set('Logged in','true')
+                            $('#error').text('')
+                        }
+                    }).catch(err =>{
+
+                        console.log(err)
+                    })
+
+                })
+                
+            }
+           
+           
+            
+        </script>
+    </head>
+    <body>
+        <br>
+        <label for="username">Username</label> <input id=username name=username type="text"> 
+        <br><p id=error></p><br>
+        <label for="password">Password</label> <input id=password name=password type="text"> 
+        <br><p></p><br>
+        <button id=main>
+            Sign Up
+        </button>
+    </body>
+</html>

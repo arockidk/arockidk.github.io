@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Auctions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            async function get(url="google.com",params={},method="GET"){
+                let send = url
+                params != {} ? send = send + '?' : send = send
+                
+                for (k in params){
+                    send = send + k+"="+params[k]
+                }
+                console.log(send)
+                let result =  await fetch(send,{method: method})
+                
+                return result.json()
+            }
+            window.onload = function(){
+                $('#main').on('click',function(){
+                    console.log('Clicked')
+                    get('https://db.arockidk.repl.co',{"hotel": 'triviago'}).then(function(v){
+                        console.log(v)
+                    })
+
+                })
+                
+            }
+           
+           
+            
+        </script>
+    </head>
+    <body>
+        <button id=signUp>
+            <a href="signup.html">
+                Sign Up
+            </a>
+            
+        </button>
+    </body>
+</html>
