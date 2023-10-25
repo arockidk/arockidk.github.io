@@ -1,2 +1,0 @@
-# arockidk.github.io
-welcome
