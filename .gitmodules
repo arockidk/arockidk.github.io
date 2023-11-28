@@ -1,0 +1,3 @@
+[submodule "dat_game_thing"]
+	path = dat_game_thing
+	url = https://github.com/arockidk/dat_game_thing.git
